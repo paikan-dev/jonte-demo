@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #0b0b0c;
+  --color-ink-2: #141416;
+  --color-ink-3: #1c1c1f;
+  --color-bone: #ede8e1;
+  --color-bone-dim: #a8a29b;
+  --color-ember: #ff3b1d;
+  --color-signal: #f5d547;
+  --color-steel: #8a8680;
+  --color-hairline: #2a2a2e;
+
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+/* Grain overlay — subtle noise film over the entire app */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Display type — massive, tight, editorial */
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.82;
+  font-size: clamp(3.5rem, 14vw, 18rem);
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  font-size: clamp(2.75rem, 9vw, 9rem);
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Hairlines */
+.hairline-b {
+  border-bottom: 1px solid var(--color-hairline);
+}
+.hairline-t {
+  border-top: 1px solid var(--color-hairline);
+}
+
+/* Marquee ticker */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.ticker-track {
+  animation: ticker 40s linear infinite;
+  will-change: transform;
+}
+
+/* Reveal on load — staggered */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade {
+  animation: fade 1.4s ease-out both;
+}
+
+/* Gradient dividers */
+.edge-fade {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-hairline) 15%,
+    var(--color-hairline) 85%,
+    transparent
+  );
+  height: 1px;
+}
+
+/* Image frames */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-ink-2);
+}
+
+.img-frame img {
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.img-frame:hover img {
+  transform: scale(1.06);
+}
+
+/* Button — corner cut, industrial */
+.btn-ember {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.75rem;
+  background: var(--color-ember);
+  color: var(--color-bone);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.btn-ember:hover {
+  background: #ff5533;
+  transform: translate(-2px, -2px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.05rem 1.75rem;
+  background: transparent;
+  color: var(--color-bone);
+  border: 1px solid var(--color-hairline);
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-ghost:hover {
+  border-color: var(--color-bone);
+  background: var(--color-ink-2);
+}
+
+/* Radial spotlight for hero */
+.spotlight {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 59, 29, 0.12) 0%,
+    transparent 60%
+  );
+}
+
+/* Scrollbar tamer */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-steel);
 }
