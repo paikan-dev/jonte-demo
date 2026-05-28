@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products, asset } from "@/lib/products";
+import { products } from "@/lib/products";
 import { Ticker } from "@/components/ticker";
 import { Partners } from "@/components/partners";
 import { ProductCard } from "@/components/product-card";
@@ -143,7 +143,7 @@ export default function Home() {
             number="01"
             title="Cascos"
             slug="cascos"
-            img={asset("/placeholder/product.svg")}
+            img="https://images.unsplash.com/photo-1558980664-10e7170b5df9?auto=format&fit=crop&w=1400&q=80"
             className="md:col-span-7 md:row-span-2"
             big
           />
@@ -151,14 +151,14 @@ export default function Home() {
             number="02"
             title="Indumentaria"
             slug="indumentaria"
-            img={asset("/placeholder/product.svg")}
+            img="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=80"
             className="md:col-span-5"
           />
           <CategoryTile
             number="03"
             title="Accesorios"
             slug="accesorios"
-            img={asset("/placeholder/product.svg")}
+            img="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80"
             className="md:col-span-3"
           />
           <CategoryTile
