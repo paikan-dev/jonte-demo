@@ -143,7 +143,7 @@ export default function Home() {
             number="01"
             title="Cascos"
             slug="cascos"
-            img="https://www.gaonamotos.com/img/products/product-1756594613088-00001657004236.jpg"
+            img="/placeholder/product.svg"
             className="md:col-span-7 md:row-span-2"
             big
           />
@@ -151,14 +151,14 @@ export default function Home() {
             number="02"
             title="Indumentaria"
             slug="indumentaria"
-            img="https://www.gaonamotos.com/img/products/product-1756487655950-00000847001936.jpg"
+            img="/placeholder/product.svg"
             className="md:col-span-5"
           />
           <CategoryTile
             number="03"
             title="Accesorios"
             slug="accesorios"
-            img="https://www.gaonamotos.com/img/products/product-1756488490008-00001779004386.jpg"
+            img="/placeholder/product.svg"
             className="md:col-span-3"
           />
           <CategoryTile
