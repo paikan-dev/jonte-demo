@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { products, categories, Category } from "@/lib/products";
+import { products, categories, Category, asset } from "@/lib/products";
 
 const AUTOPLAY_MS = 7000;
 
@@ -93,7 +93,7 @@ export function ShowcaseClient() {
       <div className="hidden">
         <Image
           key={next.id}
-          src={next.images[0]}
+          src={asset(next.images[0])}
           alt=""
           width={1200}
           height={1600}
@@ -118,7 +118,7 @@ export function ShowcaseClient() {
             </div>
 
             <Image
-              src={current.images[0]}
+              src={asset(current.images[0])}
               alt={current.name}
               fill
               priority
@@ -201,7 +201,7 @@ export function ShowcaseClient() {
       <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-8 py-5">
         <Link href="/" className="flex flex-col items-start gap-1">
           <Image
-            src="/logo-jonte-blanco.png"
+            src={asset("/logo-jonte-blanco.png")}
             alt="Motos Jonte"
             width={984}
             height={450}

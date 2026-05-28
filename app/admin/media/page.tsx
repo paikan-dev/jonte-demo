@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { products } from "@/lib/products";
+import { products, asset } from "@/lib/products";
 
 export default function MediaPage() {
   const allImages = products.flatMap((p) =>
@@ -46,7 +46,7 @@ export default function MediaPage() {
             className="aspect-square bg-ink-3 relative overflow-hidden group cursor-pointer border border-hairline hover:border-ember transition"
           >
             <Image
-              src={img.src}
+              src={asset(img.src)}
               alt={img.name}
               fill
               sizes="200px"

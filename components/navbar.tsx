@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { asset } from "@/lib/products";
 
 const links = [
   { href: "/catalogo", label: "Catálogo" },
@@ -33,7 +34,7 @@ export function Navbar() {
       <div className="px-6 md:px-10 h-20 md:h-28 flex items-center justify-between">
         <Link href="/" className="flex items-center group" aria-label="Motos Jonte — Inicio">
           <Image
-            src="/logo-jonte-blanco.png"
+            src={asset("/logo-jonte-blanco.png")}
             alt="Motos Jonte"
             width={984}
             height={450}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products } from "@/lib/products";
+import { products, asset } from "@/lib/products";
 
 const metrics = [
   { label: "Productos activos", value: "1.024", delta: "+12", sub: "últimos 30 días" },
@@ -121,7 +121,7 @@ export default function AdminDashboard() {
               <li key={p.id} className="flex items-center gap-3">
                 <div className="relative w-12 h-12 bg-ink-3 shrink-0 overflow-hidden">
                   <Image
-                    src={p.images[0]}
+                    src={asset(p.images[0])}
                     alt={p.name}
                     fill
                     sizes="48px"

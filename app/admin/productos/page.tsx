@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products, formatPrice } from "@/lib/products";
+import { products, formatPrice, asset } from "@/lib/products";
 
 export default function AdminProducts() {
   return (
@@ -99,7 +99,7 @@ export default function AdminProducts() {
                     <div className="flex items-center gap-3">
                       <div className="relative w-12 h-12 bg-ink-3 shrink-0 overflow-hidden">
                         <Image
-                          src={p.images[0]}
+                          src={asset(p.images[0])}
                           alt={p.name}
                           fill
                           sizes="48px"

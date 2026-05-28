@@ -700,6 +700,12 @@ export const formatPrice = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
+// Prefixes a public asset path with the configured basePath so images
+// resolve correctly when the site is served from a sub-path (GitHub Pages).
+// next/image does not apply basePath to src automatically.
+export const asset = (path: string) =>
+  `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 export const getProduct = (id: string) => products.find((p) => p.id === id);
 export const getRelated = (id: string, category: Category) =>
   products.filter((p) => p.id !== id && p.category === category).slice(0, 3);

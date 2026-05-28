@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Product, formatPrice } from "@/lib/products";
+import { Product, formatPrice, asset } from "@/lib/products";
 
 export function ProductCard({
   product,
@@ -17,7 +17,7 @@ export function ProductCard({
     >
       <div className="img-frame aspect-[4/5] mb-4 relative">
         <Image
-          src={product.images[0]}
+          src={asset(product.images[0])}
           alt={product.name}
           fill
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"

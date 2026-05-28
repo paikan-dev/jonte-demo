@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProduct, getRelated, formatPrice, products } from "@/lib/products";
+import { getProduct, getRelated, formatPrice, products, asset } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 
 export async function generateStaticParams() {
@@ -45,7 +45,7 @@ export default async function ProductPage({
         <div className="md:col-span-7">
           <div className="img-frame aspect-[4/5] relative mb-4">
             <Image
-              src={product.images[0]}
+              src={asset(product.images[0])}
               alt={product.name}
               fill
               priority
@@ -66,7 +66,7 @@ export default async function ProductPage({
               {product.images.slice(1).map((src, i) => (
                 <div key={i} className="img-frame aspect-[4/5] relative">
                   <Image
-                    src={src}
+                    src={asset(src)}
                     alt={`${product.name} ${i + 2}`}
                     fill
                     sizes="20vw"

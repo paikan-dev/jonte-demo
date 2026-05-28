@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AdminNav } from "./admin-nav";
+import { asset } from "@/lib/products";
 
 export default function AdminLayout({
   children,
@@ -14,7 +15,7 @@ export default function AdminLayout({
         <div className="px-6 py-6 hairline-b">
           <Link href="/" className="flex flex-col items-start gap-2 group">
             <Image
-              src="/logo-jonte-blanco.png"
+              src={asset("/logo-jonte-blanco.png")}
               alt="Motos Jonte"
               width={984}
               height={450}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { partners } from "@/lib/products";
+import { partners, asset } from "@/lib/products";
 
 export function Partners() {
   return (
@@ -30,7 +30,7 @@ export function Partners() {
             <div className="absolute inset-0 flex items-center justify-center p-8">
               <div className="relative w-full h-full">
                 <Image
-                  src={p.logo}
+                  src={asset(p.logo)}
                   alt={p.name}
                   fill
                   sizes="240px"
