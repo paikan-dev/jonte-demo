@@ -14,6 +14,7 @@ export type Product = {
   images: string[];
   description: string;
   specs: { label: string; value: string }[];
+  colors?: string[];
   featured?: boolean;
   collection?: string;
 };
